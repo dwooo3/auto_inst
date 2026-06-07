@@ -92,14 +92,6 @@ EOF
 nginx -t
 systemctl restart nginx
 
-echo "=== 8. Install 3x-ui ==="
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
-
-echo "=== DONE ==="
-echo "Домен: $DOMAIN"
-echo "Nginx SNI fallback слушает: 127.0.0.1:9000"
-echo "Теперь в 3x-ui Reality dest указывай: 127.0.0.1:9000"
-echo "serverNames/SNI: $DOMAIN"
 echo ""
 echo "============================================================"
 echo "                 SSL CERTIFICATE PATHS"
@@ -123,3 +115,13 @@ echo "Public Key File  -> /etc/letsencrypt/live/$DOMAIN/fullchain.pem"
 echo "Private Key File -> /etc/letsencrypt/live/$DOMAIN/privkey.pem"
 echo "============================================================"
 echo ""
+
+echo "=== 8. Install 3x-ui ==="
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+
+echo "=== DONE ==="
+echo "Домен: $DOMAIN"
+echo "Nginx SNI fallback слушает: 127.0.0.1:9000"
+echo "Теперь в 3x-ui Reality dest указывай: 127.0.0.1:9000"
+echo "serverNames/SNI: $DOMAIN"
+
