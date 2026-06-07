@@ -89,35 +89,18 @@ server {
 }
 EOF
 
-echo ""
-echo "============================================================"
-echo "                 SSL CERTIFICATE PATHS"
-echo "============================================================"
-echo ""
-echo "FULLCHAIN / CERTIFICATE:"
-echo "/etc/letsencrypt/live/$DOMAIN/fullchain.pem"
-echo ""
-echo "PRIVATE KEY:"
-echo "/etc/letsencrypt/live/$DOMAIN/privkey.pem"
-echo ""
-echo "CERTIFICATE:"
-echo "/etc/letsencrypt/live/$DOMAIN/cert.pem"
-echo ""
-echo "CHAIN:"
-echo "/etc/letsencrypt/live/$DOMAIN/chain.pem"
-echo ""
-echo "============================================================"
-echo "Для 3x-ui обычно нужны:"
-echo "Public Key File  -> /etc/letsencrypt/live/$DOMAIN/fullchain.pem"
-echo "Private Key File -> /etc/letsencrypt/live/$DOMAIN/privkey.pem"
-echo "============================================================"
-echo ""
-
 nginx -t
 systemctl restart nginx
 
 
 echo "=== 8. Install 3x-ui ==="
+echo ""
+echo "============================================================"
+echo "                 SSL CERTIFICATE PATHS"
+echo "Public Key File  -> /etc/letsencrypt/live/$DOMAIN/fullchain.pem"
+echo "Private Key File -> /etc/letsencrypt/live/$DOMAIN/privkey.pem"
+echo "============================================================"
+echo ""
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 
 echo "=== DONE ==="
