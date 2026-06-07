@@ -89,9 +89,6 @@ server {
 }
 EOF
 
-nginx -t
-systemctl restart nginx
-
 echo ""
 echo "============================================================"
 echo "                 SSL CERTIFICATE PATHS"
@@ -115,6 +112,10 @@ echo "Public Key File  -> /etc/letsencrypt/live/$DOMAIN/fullchain.pem"
 echo "Private Key File -> /etc/letsencrypt/live/$DOMAIN/privkey.pem"
 echo "============================================================"
 echo ""
+
+nginx -t
+systemctl restart nginx
+
 
 echo "=== 8. Install 3x-ui ==="
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
